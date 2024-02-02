@@ -21,6 +21,7 @@ try {
         is_file('db/fixtures.php') && is_readable('db/fixtures.php'))
     {
         $sql = file_get_contents("db/database.sql");
+        $sql = str_replace('dbTest', constant('APP_DB_NAME'), $sql);
         $statement = $pdo->query($sql);
         require_once 'db/fixtures.php';
         echo "Database and tables created successfully";
