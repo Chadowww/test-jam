@@ -37,8 +37,8 @@ class BookRepository
                 SELECT b.id as book_id, b.title, b.publication_date, a.name as author_name, g.gender_name
                 FROM book b 
                 LEFT JOIN book_gender bg on bg.book_id = b.id 
-                INNER JOIN dbTest.author a on b.author_id = a.id
-                LEFT JOIN dbTest.gender g on bg.gender_id = g.id
+                INNER JOIN author a on b.author_id = a.id
+                LEFT JOIN gender g on bg.gender_id = g.id
                 WHERE b.id = :id";
             $statement = $this->pdo->prepare($sql);
             $statement->bindValue(':id', $id);

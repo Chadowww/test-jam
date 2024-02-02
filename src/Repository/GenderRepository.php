@@ -46,7 +46,7 @@ class GenderRepository
     public function list() : array
     {
        try {
-           $sql = "SELECT DISTINCT gender.* FROM gender RIGHT JOIN dbTest.book_gender bg on gender.id = bg.gender_id";
+           $sql = "SELECT DISTINCT gender.* FROM gender RIGHT JOIN book_gender bg on gender.id = bg.gender_id";
            $statement = $this->pdo->prepare($sql);
            $statement->execute();
            $genders = $statement->fetchAll(PDO::FETCH_CLASS, Gender::class);
